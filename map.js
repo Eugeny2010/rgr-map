@@ -234,9 +234,6 @@ function playTrack() {
     updatePlayPauseButton();
     updateTrackInfo();
     updateVolumeButton();
-  }).catch(err => {
-    console.error("Playback failed:", err);
-    playNextTrack();
   });
 }
 
