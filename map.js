@@ -11,15 +11,15 @@ const map = L.map('map', {
   minZoom: 7,
   maxZoom: 18,
   worldCopyJump: false,
-  zoomControl: false,
   tap: false,
-  bubblingMouseEvents: false
+  bubblingMouseEvents: false,
+  zoomControl: false
 }).setView([43, 44], 7); // Центр Кавказа
 
 // Добавляем тёмные тайлы в стиле ТНО (CartoDB DarkMatter)
 L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
   noWrap: true,
-  attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap. Не имеет связи с реальным миром. Это игра.</a>',
   subdomains: 'abcd',
 }).addTo(map);
 
@@ -37,6 +37,10 @@ const capitalIcon = L.divIcon({
   iconSize: [20, 20],
   iconAnchor: [10, 10]
 });
+
+L.control.zoom({
+  position: 'topright' // ← вот это меняет положение
+}).addTo(map);
 
 // Функция создания содержимого popup для точек (показываем все свойства кроме служебных и name)
 function createPopupContent(feature) {
